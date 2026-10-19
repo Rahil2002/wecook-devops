@@ -18,17 +18,7 @@ data:
   SMTP_PORT: "587"
   SMTP_USERNAME: user@example.com
   SMTP_FROM: noreply@example.com
----
-apiVersion: v1
-kind: Secret
-metadata:
-  name: wecook-app-secret
-  labels:
-    app: wecook-backend
-type: Opaque
-stringData:
-  ADMIN_PASSWORD: Change-m3! # change to secure password
-  SMTP_PASSWORD: your-smtp-password
+
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -48,8 +38,8 @@ spec:
     spec:
       containers:
         - name: backend
-          image: matthew10125/wecook-server:latest
-          imagePullPolicy: Always
+          image: wecook-backend:dev
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
           envFrom:
@@ -92,6 +82,7 @@ spec:
         - name: backend-data
           persistentVolumeClaim:
             claimName: wecook-backend-data
+
 ---
 apiVersion: v1
 kind: Service

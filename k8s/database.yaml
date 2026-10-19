@@ -1,16 +1,4 @@
 apiVersion: v1
-kind: Secret
-metadata:
-  name: wecook-db-secret
-  labels:
-    app: wecook-database
-type: Opaque
-stringData:
-  POSTGRES_USER: wecook
-  POSTGRES_PASSWORD: secure-password
-  POSTGRES_DB: wecook
----
-apiVersion: v1
 kind: Service
 metadata:
   name: wecook-database
@@ -23,6 +11,7 @@ spec:
     - name: postgres
       port: 5432
       targetPort: 5432
+
 ---
 apiVersion: apps/v1
 kind: StatefulSet

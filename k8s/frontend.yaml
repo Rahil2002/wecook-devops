@@ -16,8 +16,8 @@ spec:
     spec:
       containers:
         - name: web
-          image: matthew10125/wecook-frontend:latest
-          imagePullPolicy: Always
+          image: wecook-frontend:dev
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 3000
           env:
