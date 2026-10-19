@@ -38,8 +38,8 @@ spec:
     spec:
       containers:
         - name: backend
-          image: wecook-backend:dev
-          imagePullPolicy: IfNotPresent
+          image: rahil2002/wecook-backend:v1
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
           envFrom:
@@ -97,3 +97,4 @@ spec:
     - name: http
       port: 8080
       targetPort: 8080
+

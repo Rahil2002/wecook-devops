@@ -16,8 +16,8 @@ spec:
     spec:
       containers:
         - name: web
-          image: wecook-frontend:dev
-          imagePullPolicy: IfNotPresent
+          image: rahil2002/wecook-frontend:v1
+          imagePullPolicy: Always
           ports:
             - containerPort: 3000
           env:
@@ -49,3 +49,4 @@ spec:
     - name: http
       port: 3000
       targetPort: 3000
+
