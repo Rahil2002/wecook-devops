@@ -69,6 +69,18 @@ pipeline {
         }
     }
 
+        stage('Verify Application Health') {
+            steps {
+                echo 'Checking WeCook frontend...'
+                bat 'curl.exe --fail --silent --show-error --retry 10 --retry-delay 5 --retry-connrefused http://127.0.0.1/'
+
+                echo 'Checking WeCook backend API...'
+                bat 'curl.exe --fail --silent --show-error --retry 10 --retry-delay 5 --retry-connrefused http://127.0.0.1/api/recipes/public'
+
+                echo 'Frontend and backend health checks passed.'
+            }
+        }
+
     post {
         always {
             bat 'docker logout'
